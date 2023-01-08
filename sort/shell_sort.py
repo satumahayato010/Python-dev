@@ -9,6 +9,7 @@ def shell_sort(nums: List[int]) -> List[int]:
         for i in range(gap, len_nums):
             temp = nums[i]
             j = i
+
             while j >= gap and nums[j-gap] > temp:
                 nums[j] = nums[j-gap]
                 j -= gap
