@@ -1,21 +1,23 @@
 from typing import List
 
 
-def selection_sort(nums: List[int]) -> List[int]:
-    len_nums = len(nums)
-    for i in range(len_nums):
-        min_idx = i
+def shell_sort(numbers: List[int]) -> List[int]:
+    len_numbers = len(numbers)
+    gap = len_numbers // 2
+    while gap > 0:
+        for i in range(gap, len_numbers):
+            temp = numbers[i]
+            j = i
+            while j >= gap and numbers[j-gap] > temp:
+                numbers[j] = numbers[j-gap]
+                j -= gap
+            numbers[j] = temp
+        gap //= 2
 
-        for j in range(i+1, len_nums):
-            if nums[j] < nums[min_idx]:
-                min_idx = j
-
-        nums[i], nums[min_idx] = nums[min_idx], nums[i]
-
-    return nums
+    return numbers
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     import random
-    nums = [random.randint(0, 100) for i in range(10)]
-    print(selection_sort(nums))
+    nums = [random.randint(0, 1000) for _ in range(10)]
+    print(shell_sort(nums))
