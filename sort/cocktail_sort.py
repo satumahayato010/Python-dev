@@ -36,5 +36,3 @@ if __name__ == "__main__":
     nums = [random.randint(0, 100) for i in range(10)]
     print(cocktail_sort(nums))
 
-    for i in range(1, 5):
-        print(i)
