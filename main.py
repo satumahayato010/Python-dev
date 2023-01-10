@@ -1,29 +1,50 @@
-from typing import List
+from typing import List, NewType
 
 
-def partition(numbers: List[int], low: int, high: int) -> int:
-    i = low - 1
-    pivot = numbers[high]
-    for j in range(low, high):
-        if numbers[j] <= pivot:
-            i += 1
-            numbers[i], numbers[j] = numbers[j], numbers[i]
-    numbers[i+1], numbers[high] = numbers[high], numbers[i+1]
-    return i+1
+IndexNum = NewType('IndexNum', int)
 
 
-def quick_sort(numbers: List[int]) -> List[int]:
-    def _quick_sort(numbers: List[int], low: int, high: int) -> None:
-        if low < high:
-            partition_index = partition(numbers, low, high)
-            _quick_sort(numbers, low, partition_index-1)
-            _quick_sort(numbers, partition_index+1, high)
+def linear_search(numbers: List[int], value: int) -> IndexNum:
+    for i in range(0, len(numbers)):
+        if numbers[i] == value:
+            return i
+    return -1
 
-    _quick_sort(numbers, 0, len(numbers)-1)
-    return numbers
+
+def binary_search(numbers: List[int], value: int) -> IndexNum:
+    left, right = 0, len(numbers) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if numbers[mid] == value:
+            return mid
+        elif numbers[mid] < value:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+
+def binary_search_recursive(numbers: List[int], value: int) -> IndexNum:
+    def _binary_search(numbers: List[int], value: int,
+                       left: IndexNum, right: IndexNum) -> IndexNum:
+        if left > right:
+            return -1
+
+        mid = (left + right) // 2
+        print("mid", mid)
+        if numbers[mid] == value:
+            return mid
+        elif numbers[mid] < value:
+            return _binary_search(numbers, value, mid + 1, right)
+        else:
+            return _binary_search(numbers, value, left, mid - 1)
+
+    return _binary_search(numbers, value, 0, len(numbers) - 1)
 
 
 if __name__ == '__main__':
+    target = 3
     import random
-    nums = [random.randint(0, 1000) for _ in range(10)]
-    print(quick_sort(nums))
+    nums = [0, 1, 3, 4, 2, 6, 0, 7, 3, 5]
+    print(nums)
+    print(binary_search_recursive(nums, target))
