@@ -50,4 +50,3 @@ if __name__ == '__main__':
     hash_table['sns'] = 'YouTube'
     hash_table.print()
     print(hash_table['sns'])
-
