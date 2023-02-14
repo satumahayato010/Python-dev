@@ -6,7 +6,6 @@ def insertion_sort(nums: List[int]) -> List[int]:
     for i in range(1, len_nums):
         temp = nums[i]
         j = i - 1
-
         while j >= 0 and nums[j] > temp:
             nums[j+1] = nums[j]
             j -= 1
@@ -16,7 +15,7 @@ def insertion_sort(nums: List[int]) -> List[int]:
     return nums
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     import random
-    nums = [random.randint(0, 100) for i in range(10)]
+    nums = [random.randint(0, 50) for i in range(5)]
     print(insertion_sort(nums))
