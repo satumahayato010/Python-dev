@@ -3,10 +3,8 @@ from typing import List
 
 def select_sort(nums: List[int]) -> List[int]:
     len_nums = len(nums)
-
     for i in range(len_nums):
         min_idx = i
-
         for j in range(i+1, len_nums):
             if nums[min_idx] > nums[j]:
                 min_idx = j
@@ -18,5 +16,5 @@ def select_sort(nums: List[int]) -> List[int]:
 
 if __name__ == "__main__":
     import random
-    nums = [random.randint(0, 100) for i in range(10)]
+    nums = [random.randint(0, 50) for i in range(6)]
     print(select_sort(nums))
