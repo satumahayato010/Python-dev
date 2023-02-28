@@ -8,7 +8,6 @@ def select_sort(nums: List[int]) -> List[int]:
         for j in range(i+1, len_nums):
             if nums[min_idx] > nums[j]:
                 min_idx = j
-
         nums[i], nums[min_idx] = nums[min_idx], nums[i]
 
     return nums
