@@ -13,10 +13,10 @@ class Stack(object):
 
 if __name__ == '__main__':
     stack = Stack()
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
     print(stack.stack)
-    print("######")
-    stack.pop()
+    stack.push(1)
+    print(stack.stack)
+    stack.push(2)
+    print(stack.stack)
+    print(stack.pop())
     print(stack.stack)
