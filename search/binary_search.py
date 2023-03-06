@@ -16,7 +16,8 @@ def binary_search(nums: List[int], target: int) -> int:
 
 
 def binary_search_recursive(nums: List[int], target: int) -> int:
-    def _binary_search(nums: List[int], target: int, left: int, right: int) -> int:
+    def _binary_search(nums: List[int], target: int,
+                       left: int, right: int) -> int:
         if left > right:
             return - 1
 
