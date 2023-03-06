@@ -52,4 +52,3 @@ if __name__ == '__main__':
     l.append(1)
     l.append(2)
     l.append(3)
-    print(l)

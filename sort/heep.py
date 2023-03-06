@@ -1,4 +1,5 @@
 import sys
+from typing import Optional
 
 
 class Heep(object):
@@ -29,6 +30,21 @@ class Heep(object):
         self.heap.append(value)
         self.current_size += 1
         self.heapify_up(self.current_size)
+
+    def pop(self) -> Optional[int]:
+        if len(self.heap) == 1:
+            return
+        
+        root = self.heap[1]
+        data = self.heap.pop()
+
+        if len(self.heap) == 1:
+            return root
+        
+        self.heap[1] = data
+        self.current_size -= 1
+        
+
 
 
 if __name__ == '__main__':
