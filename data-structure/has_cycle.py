@@ -3,7 +3,7 @@ from typing import List, Any, Optional
 
 
 class ListNode:
-    def __init__(self, data: Any, next_node: ListNode) -> None:
+    def __init__(self, data: Any, next_node: ListNode = None) -> None:
         self.data = data
         self.next = next_node
 
@@ -21,6 +21,14 @@ class Solution:
 
 
 if __name__ == '__main__':
-    head = [3, 2, 0, -4]
+    head = ListNode(3)
+    node1 = ListNode(2)
+    node2 = ListNode(0)
+    node3 = ListNode(-4)
+
+    head.next = node1
+    node1.next = node2
+    node2.next = node3
+
     solution = Solution()
-    solution.has_cycle(head)
+    print(solution.has_cycle(head))
